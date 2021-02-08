@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      499 字
+      494 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      8
+      7
        分钟
     </span>
   
@@ -230,156 +230,110 @@
               <h3 id="Docker使用"><a href="#Docker使用" class="headerlink" title="Docker使用"></a>Docker使用</h3><ul>
 <li><h5 id="卸载旧版本"><a href="#卸载旧版本" class="headerlink" title="卸载旧版本"></a>卸载旧版本</h5></li>
 </ul>
-<pre><code class="hljs properties"><span class="hljs-attr">sudo</span> <span class="hljs-string">yum remove docker \</span>
-                  <span class="hljs-meta">docker-client</span> <span class="hljs-string">\</span>
-                  <span class="hljs-meta">docker-client-latest</span> <span class="hljs-string">\</span>
-                  <span class="hljs-meta">docker-common</span> <span class="hljs-string">\</span>
-                  <span class="hljs-meta">docker-latest</span> <span class="hljs-string">\</span>
-                  <span class="hljs-meta">docker-latest-logrotate</span> <span class="hljs-string">\</span>
-                  <span class="hljs-meta">docker-logrotate</span> <span class="hljs-string">\</span>
-                  <span class="hljs-attr">docker-engine</span></code></pre>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-attr">sudo</span> <span class="hljs-string">yum remove docker \</span><br>                  <span class="hljs-meta">docker-client</span> <span class="hljs-string">\</span><br>                  <span class="hljs-meta">docker-client-latest</span> <span class="hljs-string">\</span><br>                  <span class="hljs-meta">docker-common</span> <span class="hljs-string">\</span><br>                  <span class="hljs-meta">docker-latest</span> <span class="hljs-string">\</span><br>                  <span class="hljs-meta">docker-latest-logrotate</span> <span class="hljs-string">\</span><br>                  <span class="hljs-meta">docker-logrotate</span> <span class="hljs-string">\</span><br>                  <span class="hljs-attr">docker-engine</span><br></code></pre></td></tr></table></figure>
 
 
 
 <ul>
 <li><h5 id="使用-Docker-仓库进行安装"><a href="#使用-Docker-仓库进行安装" class="headerlink" title="使用 Docker 仓库进行安装"></a>使用 Docker 仓库进行安装</h5></li>
 </ul>
-<h5 id="1-检查linux内核版本必须高于3-1"><a href="#1-检查linux内核版本必须高于3-1" class="headerlink" title="1.检查linux内核版本必须高于3.1"></a>1.检查linux内核版本必须高于3.1</h5><pre><code class="hljs awk">uname -r <span class="hljs-regexp">//</span>检查内核版本
-yum update <span class="hljs-regexp">//</span>更新yum包</code></pre>
+<h5 id="1-检查linux内核版本必须高于3-1"><a href="#1-检查linux内核版本必须高于3-1" class="headerlink" title="1.检查linux内核版本必须高于3.1"></a>1.检查linux内核版本必须高于3.1</h5><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">uname -r <span class="hljs-regexp">//</span>检查内核版本<br>yum update <span class="hljs-regexp">//</span>更新yum包<br></code></pre></td></tr></table></figure>
 
-<h5 id="2-安装docker"><a href="#2-安装docker" class="headerlink" title="2.安装docker"></a>2.安装docker</h5><pre><code class="hljs cmake">yum <span class="hljs-keyword">install</span> docker</code></pre>
-<h5 id="3-启动docker"><a href="#3-启动docker" class="headerlink" title="3.启动docker"></a>3.启动docker</h5><pre><code class="hljs properties"><span class="hljs-attr">systemctl</span> <span class="hljs-string">start docker</span>
-<span class="hljs-attr">docker</span> <span class="hljs-string">-v</span></code></pre>
-<h5 id="4-设置开机启动docker"><a href="#4-设置开机启动docker" class="headerlink" title="4.设置开机启动docker"></a>4.设置开机启动docker</h5><pre><code class="hljs routeros">systemctl <span class="hljs-builtin-name">enable</span> docker</code></pre>
-<h5 id="5-停止docker"><a href="#5-停止docker" class="headerlink" title="5.停止docker"></a>5.停止docker</h5><pre><code class="hljs arduino">systemctl <span class="hljs-built_in">stop</span> docker</code></pre>
-<h5 id="6-搜索资源"><a href="#6-搜索资源" class="headerlink" title="6.搜索资源"></a>6.搜索资源</h5><pre><code class="hljs ebnf"><span class="hljs-attribute">docker search mysql</span></code></pre>
-<h5 id="7-下载镜像"><a href="#7-下载镜像" class="headerlink" title="7.下载镜像"></a>7.下载镜像</h5><pre><code class="hljs ebnf"><span class="hljs-attribute">docker pull mysql</span></code></pre>
+<h5 id="2-安装docker"><a href="#2-安装docker" class="headerlink" title="2.安装docker"></a>2.安装docker</h5><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">yum <span class="hljs-keyword">install</span> docker<br></code></pre></td></tr></table></figure>
+<h5 id="3-启动docker"><a href="#3-启动docker" class="headerlink" title="3.启动docker"></a>3.启动docker</h5><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-attr">systemctl</span> <span class="hljs-string">start docker</span><br><span class="hljs-attr">docker</span> <span class="hljs-string">-v</span><br></code></pre></td></tr></table></figure>
+<h5 id="4-设置开机启动docker"><a href="#4-设置开机启动docker" class="headerlink" title="4.设置开机启动docker"></a>4.设置开机启动docker</h5><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">systemctl <span class="hljs-builtin-name">enable</span> docker<br></code></pre></td></tr></table></figure>
+<h5 id="5-停止docker"><a href="#5-停止docker" class="headerlink" title="5.停止docker"></a>5.停止docker</h5><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs arduino">systemctl <span class="hljs-built_in">stop</span> docker<br></code></pre></td></tr></table></figure>
+<h5 id="6-搜索资源"><a href="#6-搜索资源" class="headerlink" title="6.搜索资源"></a>6.搜索资源</h5><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">docker search mysql</span><br></code></pre></td></tr></table></figure>
+<h5 id="7-下载镜像"><a href="#7-下载镜像" class="headerlink" title="7.下载镜像"></a>7.下载镜像</h5><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">docker pull mysql</span> <br></code></pre></td></tr></table></figure>
 
 
 
 
 
 <h6 id="设置仓库"><a href="#设置仓库" class="headerlink" title="设置仓库"></a><strong>设置仓库</strong></h6><p>安装所需的软件包。yum-utils 提供了 yum-config-manager ，并且 device mapper 存储驱动程序需要 device-mapper-persistent-data 和 lvm2。</p>
-<pre><code class="hljs properties"><span class="hljs-attr">sudo</span> <span class="hljs-string">yum install -y yum-utils \</span>
-  <span class="hljs-meta">device-mapper-persistent-data</span> <span class="hljs-string">\</span>
-  <span class="hljs-attr">lvm2</span></code></pre>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-attr">sudo</span> <span class="hljs-string">yum install -y yum-utils \</span><br>  <span class="hljs-meta">device-mapper-persistent-data</span> <span class="hljs-string">\</span><br>  <span class="hljs-attr">lvm2</span><br></code></pre></td></tr></table></figure>
 
 <p> 使用以下命令来设置稳定的仓库。 </p>
-<pre><code class="hljs awk">sudo yum-config-manager \
-    --add-repo \
-    https:<span class="hljs-regexp">//</span>download.docker.com<span class="hljs-regexp">/linux/</span>centos/docker-ce.repo</code></pre>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk">sudo yum-config-manager \<br>    --add-repo \<br>    https:<span class="hljs-regexp">//</span>download.docker.com<span class="hljs-regexp">/linux/</span>centos/docker-ce.repo<br></code></pre></td></tr></table></figure>
 
 <ul>
 <li><h5 id="安装-Docker-Engine-Community"><a href="#安装-Docker-Engine-Community" class="headerlink" title="安装 Docker Engine-Community"></a>安装 Docker Engine-Community</h5><p>安装最新版本的 Docker Engine-Community 和 containerd，或者转到下一步安装特定版本： </p>
 </li>
 </ul>
-<pre><code class="hljs vim">sudo yum install docker-<span class="hljs-keyword">ce</span> docker-<span class="hljs-keyword">ce</span>-cli containerd.io</code></pre>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vim">sudo yum install docker-<span class="hljs-keyword">ce</span> docker-<span class="hljs-keyword">ce</span>-cli containerd.io<br></code></pre></td></tr></table></figure>
 
 <ul>
 <li><h5 id="启动Docker"><a href="#启动Docker" class="headerlink" title="启动Docker"></a>启动Docker</h5></li>
 </ul>
-<pre><code class="hljs crmsh">systemctl <span class="hljs-literal">start</span> docker</code></pre>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">systemctl <span class="hljs-literal">start</span> docker<br></code></pre></td></tr></table></figure>
 
 <ul>
 <li><h5 id="查看Docker版本"><a href="#查看Docker版本" class="headerlink" title="查看Docker版本"></a>查看Docker版本</h5></li>
 </ul>
-<pre><code class="hljs ebnf"><span class="hljs-attribute">docker -v</span></code></pre>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">docker -v</span><br></code></pre></td></tr></table></figure>
 
 <ul>
 <li><h5 id="查看有无下载Docker镜像"><a href="#查看有无下载Docker镜像" class="headerlink" title="查看有无下载Docker镜像"></a>查看有无下载Docker镜像</h5></li>
 </ul>
-<pre><code class="hljs ebnf"><span class="hljs-attribute">docker images</span></code></pre>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">docker images</span><br></code></pre></td></tr></table></figure>
 
 <ul>
 <li><h5 id="设置Docker开机启动"><a href="#设置Docker开机启动" class="headerlink" title="设置Docker开机启动"></a>设置Docker开机启动</h5></li>
 </ul>
-<pre><code class="hljs routeros">systemctl <span class="hljs-builtin-name">enable</span> docker</code></pre>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">systemctl <span class="hljs-builtin-name">enable</span> docker<br></code></pre></td></tr></table></figure>
 
 <ul>
 <li><h5 id="配置镜像加速"><a href="#配置镜像加速" class="headerlink" title="配置镜像加速"></a>配置镜像加速</h5></li>
 </ul>
-<pre><code class="hljs awk">sudo mkdir -p <span class="hljs-regexp">/etc/</span>docker;
-sudo tee <span class="hljs-regexp">/etc/</span>docker/daemon.json &lt;&lt;-<span class="hljs-string">&#x27;EOF&#x27;</span>
-&#123;
-  <span class="hljs-string">&quot;registry-mirrors&quot;</span>: [<span class="hljs-string">&quot;https://stmuunbo.mirror.aliyuncs.com&quot;</span>]
-&#125;
-EOF;
-sudo systemctl daemon-reload;
-sudo systemctl restart docker;</code></pre>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs awk">sudo mkdir -p <span class="hljs-regexp">/etc/</span>docker;<br>sudo tee <span class="hljs-regexp">/etc/</span>docker/daemon.json &lt;&lt;-<span class="hljs-string">&#x27;EOF&#x27;</span><br>&#123;<br>  <span class="hljs-string">&quot;registry-mirrors&quot;</span>: [<span class="hljs-string">&quot;https://stmuunbo.mirror.aliyuncs.com&quot;</span>]<br>&#125;<br>EOF;<br>sudo systemctl daemon-reload;<br>sudo systemctl restart docker;<br></code></pre></td></tr></table></figure>
 
 <ul>
 <li><h5 id="下载mysql镜像"><a href="#下载mysql镜像" class="headerlink" title="下载mysql镜像"></a>下载mysql镜像</h5></li>
 </ul>
-<pre><code class="hljs apache"><span class="hljs-attribute">docker</span> pull mysql:<span class="hljs-number">5</span>.<span class="hljs-number">7</span></code></pre>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">docker</span> pull mysql:<span class="hljs-number">5</span>.<span class="hljs-number">7</span><br></code></pre></td></tr></table></figure>
 
 <ul>
 <li><h5 id="启动mysql镜像"><a href="#启动mysql镜像" class="headerlink" title="启动mysql镜像"></a>启动mysql镜像</h5></li>
 </ul>
-<pre><code class="hljs awk">docker run -p <span class="hljs-number">3306</span>:<span class="hljs-number">3306</span> --name mysql \
--v <span class="hljs-regexp">/mydata/my</span>sql<span class="hljs-regexp">/log:/</span>var<span class="hljs-regexp">/log/my</span>sql \
--v <span class="hljs-regexp">/mydata/my</span>sql<span class="hljs-regexp">/data:/</span>var<span class="hljs-regexp">/lib/my</span>sql \
--v <span class="hljs-regexp">/mydata/my</span>sql<span class="hljs-regexp">/conf:/</span>etc/mysql \
--e MYSQL_ROOT_PASSWORD=root \
--d mysql:<span class="hljs-number">5.7</span></code></pre>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs awk">docker run -p <span class="hljs-number">3306</span>:<span class="hljs-number">3306</span> --name mysql \<br>-v <span class="hljs-regexp">/mydata/my</span>sql<span class="hljs-regexp">/log:/</span>var<span class="hljs-regexp">/log/my</span>sql \<br>-v <span class="hljs-regexp">/mydata/my</span>sql<span class="hljs-regexp">/data:/</span>var<span class="hljs-regexp">/lib/my</span>sql \<br>-v <span class="hljs-regexp">/mydata/my</span>sql<span class="hljs-regexp">/conf:/</span>etc/mysql \<br>-e MYSQL_ROOT_PASSWORD=root \<br>-d mysql:<span class="hljs-number">5.7</span><br></code></pre></td></tr></table></figure>
 
 <ul>
 <li><h5 id="查看运行中的Docker镜像"><a href="#查看运行中的Docker镜像" class="headerlink" title="查看运行中的Docker镜像"></a>查看运行中的Docker镜像</h5></li>
 </ul>
-<pre><code class="hljs ebnf"><span class="hljs-attribute">docker ps</span></code></pre>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">docker ps</span><br></code></pre></td></tr></table></figure>
 
 <ul>
 <li><h5 id="修改mysql字符集"><a href="#修改mysql字符集" class="headerlink" title="修改mysql字符集"></a>修改mysql字符集</h5></li>
 </ul>
-<pre><code class="hljs sql">[client]
-default-character-<span class="hljs-keyword">set</span>=utf8
- 
-[mysql]
-<span class="hljs-keyword">default</span>-<span class="hljs-built_in">character</span>-<span class="hljs-keyword">set</span>=utf8
- 
-[mysqld]
-init_connect=<span class="hljs-string">&#x27;SET collation_connection = utf8_unicode_ci&#x27;</span>
-init_connect=<span class="hljs-string">&#x27;SET NAMES utf8&#x27;</span>
-<span class="hljs-built_in">character</span>-<span class="hljs-keyword">set</span>-<span class="hljs-keyword">server</span>=utf8
-<span class="hljs-keyword">collation</span>-<span class="hljs-keyword">server</span>=utf8_unicode_ci
-<span class="hljs-keyword">skip</span>-<span class="hljs-built_in">character</span>-<span class="hljs-keyword">set</span>-<span class="hljs-keyword">client</span>-handshake
-<span class="hljs-keyword">skip</span>-<span class="hljs-keyword">name</span>-resolve</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs sql">[client]<br>default-character-<span class="hljs-keyword">set</span>=utf8<br> <br>[mysql]<br><span class="hljs-keyword">default</span>-<span class="hljs-built_in">character</span>-<span class="hljs-keyword">set</span>=utf8<br> <br>[mysqld]<br>init_connect=<span class="hljs-string">&#x27;SET collation_connection = utf8_unicode_ci&#x27;</span><br>init_connect=<span class="hljs-string">&#x27;SET NAMES utf8&#x27;</span><br><span class="hljs-built_in">character</span>-<span class="hljs-keyword">set</span>-<span class="hljs-keyword">server</span>=utf8<br><span class="hljs-keyword">collation</span>-<span class="hljs-keyword">server</span>=utf8_unicode_ci<br><span class="hljs-keyword">skip</span>-<span class="hljs-built_in">character</span>-<span class="hljs-keyword">set</span>-<span class="hljs-keyword">client</span>-handshake<br><span class="hljs-keyword">skip</span>-<span class="hljs-keyword">name</span>-resolve<br></code></pre></td></tr></table></figure>
 
 
 
 <ul>
 <li><h5 id="进入Docker镜像中的mysql"><a href="#进入Docker镜像中的mysql" class="headerlink" title="进入Docker镜像中的mysql"></a>进入Docker镜像中的mysql</h5></li>
 </ul>
-<pre><code class="hljs awk">docker exec -it mysql <span class="hljs-regexp">/bin/</span>bash</code></pre>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">docker exec -it mysql <span class="hljs-regexp">/bin/</span>bash<br></code></pre></td></tr></table></figure>
 
 <ul>
 <li><h5 id="下载redis"><a href="#下载redis" class="headerlink" title="下载redis"></a>下载redis</h5></li>
 </ul>
-<pre><code class="hljs ebnf"><span class="hljs-attribute">docker pull redis</span></code></pre>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">docker pull redis</span><br></code></pre></td></tr></table></figure>
 
 <ul>
 <li><h5 id="运行redis"><a href="#运行redis" class="headerlink" title="运行redis"></a>运行redis</h5></li>
 </ul>
-<pre><code class="hljs awk">mkdir -p <span class="hljs-regexp">/mydata/</span>redis/conf
-touch <span class="hljs-regexp">/mydata/</span>redis<span class="hljs-regexp">/conf/</span>redis.conf
-
-
-
-
-docker run -p <span class="hljs-number">6379</span>:<span class="hljs-number">6379</span> --name redis \
--v <span class="hljs-regexp">/mydata/</span>redis<span class="hljs-regexp">/data:/</span>data \
--v <span class="hljs-regexp">/mydata/</span>redis<span class="hljs-regexp">/conf/</span>redis.conf:<span class="hljs-regexp">/etc/</span>redis/redis.conf \
--d redis redis-server <span class="hljs-regexp">/etc/</span>redis/redis.conf</code></pre>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs awk">mkdir -p <span class="hljs-regexp">/mydata/</span>redis/conf<br>touch <span class="hljs-regexp">/mydata/</span>redis<span class="hljs-regexp">/conf/</span>redis.conf<br><br><br><br><br>docker run -p <span class="hljs-number">6379</span>:<span class="hljs-number">6379</span> --name redis \<br>-v <span class="hljs-regexp">/mydata/</span>redis<span class="hljs-regexp">/data:/</span>data \<br>-v <span class="hljs-regexp">/mydata/</span>redis<span class="hljs-regexp">/conf/</span>redis.conf:<span class="hljs-regexp">/etc/</span>redis/redis.conf \<br>-d redis redis-server <span class="hljs-regexp">/etc/</span>redis/redis.conf<br></code></pre></td></tr></table></figure>
 
 <ul>
 <li><h5 id="添加redis持久化"><a href="#添加redis持久化" class="headerlink" title="添加redis持久化"></a>添加redis持久化</h5></li>
 </ul>
 <p>在redis.conf中添加以下代码</p>
-<pre><code class="hljs nginx"><span class="hljs-attribute">appendonly</span> <span class="hljs-literal">yes</span></code></pre>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">appendonly</span> <span class="hljs-literal">yes</span><br></code></pre></td></tr></table></figure>
 
 <ul>
 <li><h5 id="自启动redis"><a href="#自启动redis" class="headerlink" title="自启动redis"></a>自启动redis</h5></li>
 </ul>
-<pre><code class="hljs pgsql">docker <span class="hljs-keyword">update</span> redis <span class="hljs-comment">--restart=always</span></code></pre>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">docker <span class="hljs-keyword">update</span> redis <span class="hljs-comment">--restart=always</span><br></code></pre></td></tr></table></figure>
             </div>
             <hr>
             <div>

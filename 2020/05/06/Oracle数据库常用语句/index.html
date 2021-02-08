@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      618 字
+      609 字
     </span>
   
 
@@ -229,101 +229,28 @@
             <div class="markdown-body">
               <h4 id="查询所登录用户的sid"><a href="#查询所登录用户的sid" class="headerlink" title="查询所登录用户的sid"></a>查询所登录用户的sid</h4><p><code>select instance_name from v$instance; </code></p>
 <h4 id="查询当前登录用户所在的表空间"><a href="#查询当前登录用户所在的表空间" class="headerlink" title="查询当前登录用户所在的表空间"></a>查询当前登录用户所在的表空间</h4><p><code>select username,default_tablespace from dba_users  where username=&#39;登录的用户名(大写)&#39;</code></p>
-<h4 id="查询所有表空间"><a href="#查询所有表空间" class="headerlink" title="查询所有表空间"></a>查询所有表空间</h4><pre><code class="hljs sql"><span class="hljs-keyword">Select</span> a.Tablespace_Name,
-       <span class="hljs-keyword">Round</span>(<span class="hljs-keyword">Sum</span>(Dbsize) / <span class="hljs-number">1024</span> / <span class="hljs-number">1024</span> / <span class="hljs-number">1024</span>, <span class="hljs-number">2</span>) <span class="hljs-string">&quot;dbszie(G)&quot;</span>,
-       <span class="hljs-keyword">Round</span>(<span class="hljs-keyword">Sum</span>(Fsize) / <span class="hljs-number">1024</span> / <span class="hljs-number">1024</span> / <span class="hljs-number">1024</span>, <span class="hljs-number">2</span>) <span class="hljs-string">&quot;fszie(G)&quot;</span>,
-       <span class="hljs-keyword">Round</span>((<span class="hljs-keyword">Sum</span>(Dbsize) - <span class="hljs-keyword">Sum</span>(Fsize)) / <span class="hljs-keyword">Sum</span>(Dbsize), <span class="hljs-number">4</span>) * <span class="hljs-number">100</span> <span class="hljs-string">&quot;利用率&quot;</span>,
-       <span class="hljs-keyword">Round</span>(<span class="hljs-keyword">Sum</span>(Fsize) / <span class="hljs-keyword">Sum</span>(Dbsize), <span class="hljs-number">4</span>) * <span class="hljs-number">100</span> <span class="hljs-string">&quot;空闲率&quot;</span>
-  <span class="hljs-keyword">From</span> (<span class="hljs-keyword">Select</span> Tablespace_Name, <span class="hljs-keyword">Sum</span>(<span class="hljs-keyword">Bytes</span>) Dbsize
-          <span class="hljs-keyword">From</span> Dba_Data_Files
-         <span class="hljs-keyword">Group</span> <span class="hljs-keyword">By</span> Tablespace_Name) a,
-       (<span class="hljs-keyword">Select</span> Tablespace_Name, <span class="hljs-keyword">Sum</span>(<span class="hljs-keyword">Bytes</span>) Fsize
-          <span class="hljs-keyword">From</span> Dba_Free_Space
-         <span class="hljs-keyword">Group</span> <span class="hljs-keyword">By</span> Tablespace_Name) b
- <span class="hljs-keyword">Where</span> a.Tablespace_Name = b.Tablespace_Name(+)
- <span class="hljs-keyword">Group</span> <span class="hljs-keyword">By</span> a.Tablespace_Name;
-</code></pre>
+<h4 id="查询所有表空间"><a href="#查询所有表空间" class="headerlink" title="查询所有表空间"></a>查询所有表空间</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">Select</span> a.Tablespace_Name,<br>       <span class="hljs-keyword">Round</span>(<span class="hljs-keyword">Sum</span>(Dbsize) / <span class="hljs-number">1024</span> / <span class="hljs-number">1024</span> / <span class="hljs-number">1024</span>, <span class="hljs-number">2</span>) <span class="hljs-string">&quot;dbszie(G)&quot;</span>,<br>       <span class="hljs-keyword">Round</span>(<span class="hljs-keyword">Sum</span>(Fsize) / <span class="hljs-number">1024</span> / <span class="hljs-number">1024</span> / <span class="hljs-number">1024</span>, <span class="hljs-number">2</span>) <span class="hljs-string">&quot;fszie(G)&quot;</span>,<br>       <span class="hljs-keyword">Round</span>((<span class="hljs-keyword">Sum</span>(Dbsize) - <span class="hljs-keyword">Sum</span>(Fsize)) / <span class="hljs-keyword">Sum</span>(Dbsize), <span class="hljs-number">4</span>) * <span class="hljs-number">100</span> <span class="hljs-string">&quot;利用率&quot;</span>,<br>       <span class="hljs-keyword">Round</span>(<span class="hljs-keyword">Sum</span>(Fsize) / <span class="hljs-keyword">Sum</span>(Dbsize), <span class="hljs-number">4</span>) * <span class="hljs-number">100</span> <span class="hljs-string">&quot;空闲率&quot;</span><br>  <span class="hljs-keyword">From</span> (<span class="hljs-keyword">Select</span> Tablespace_Name, <span class="hljs-keyword">Sum</span>(<span class="hljs-keyword">Bytes</span>) Dbsize<br>          <span class="hljs-keyword">From</span> Dba_Data_Files<br>         <span class="hljs-keyword">Group</span> <span class="hljs-keyword">By</span> Tablespace_Name) a,<br>       (<span class="hljs-keyword">Select</span> Tablespace_Name, <span class="hljs-keyword">Sum</span>(<span class="hljs-keyword">Bytes</span>) Fsize<br>          <span class="hljs-keyword">From</span> Dba_Free_Space<br>         <span class="hljs-keyword">Group</span> <span class="hljs-keyword">By</span> Tablespace_Name) b<br> <span class="hljs-keyword">Where</span> a.Tablespace_Name = b.Tablespace_Name(+)<br> <span class="hljs-keyword">Group</span> <span class="hljs-keyword">By</span> a.Tablespace_Name;<br><br></code></pre></td></tr></table></figure>
 
-<h5 id="创建sequence"><a href="#创建sequence" class="headerlink" title="创建sequence"></a>创建sequence</h5><pre><code class="hljs sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">sequence</span> YBAQ02_SEQNO
-<span class="hljs-keyword">minvalue</span> <span class="hljs-number">1</span>
-maxvalue <span class="hljs-number">999999999999999999999999999</span>
-<span class="hljs-keyword">start</span> <span class="hljs-keyword">with</span> <span class="hljs-number">1</span>
-<span class="hljs-keyword">increment</span> <span class="hljs-keyword">by</span> <span class="hljs-number">1</span>
-<span class="hljs-keyword">cache</span> <span class="hljs-number">20</span>;
-</code></pre>
-<h4 id="查看导致锁表的sql语句是那一条"><a href="#查看导致锁表的sql语句是那一条" class="headerlink" title="查看导致锁表的sql语句是那一条"></a>查看导致锁表的sql语句是那一条</h4><pre><code class="hljs sql"><span class="hljs-keyword">select</span> l.session_id <span class="hljs-keyword">sid</span>, 
-s.serial<span class="hljs-comment">#, </span>
-l.locked_mode, 
-l.oracle_username, 
-s.user<span class="hljs-comment">#, </span>
-l.os_user_name, 
-s.machine, 
-s.terminal, 
-a.sql_text, 
-a.action 
-<span class="hljs-keyword">from</span> v$sqlarea a, v$<span class="hljs-keyword">session</span> s, v$locked_object l 
-<span class="hljs-keyword">where</span> l.session_id = s.sid 
-<span class="hljs-keyword">and</span> s.prev_sql_addr = a.address 
-<span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> <span class="hljs-keyword">sid</span>, s.serial<span class="hljs-comment">#;</span>
-</code></pre>
-<h4 id="杀掉锁表进程："><a href="#杀掉锁表进程：" class="headerlink" title="杀掉锁表进程："></a>杀掉锁表进程：</h4><h5 id="–通过上面的查询获取SID和serial-，替换下面的x-y-就可以解除被锁的状态"><a href="#–通过上面的查询获取SID和serial-，替换下面的x-y-就可以解除被锁的状态" class="headerlink" title="–通过上面的查询获取SID和serial#，替换下面的x,y,就可以解除被锁的状态"></a>–通过上面的查询获取SID和serial#，替换下面的x,y,就可以解除被锁的状态</h5><pre><code class="hljs routeros">alter<span class="hljs-built_in"> system </span>kill session <span class="hljs-string">&#x27;x,y&#x27;</span>;
-</code></pre>
+<h5 id="创建sequence"><a href="#创建sequence" class="headerlink" title="创建sequence"></a>创建sequence</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">sequence</span> YBAQ02_SEQNO<br><span class="hljs-keyword">minvalue</span> <span class="hljs-number">1</span><br>maxvalue <span class="hljs-number">999999999999999999999999999</span><br><span class="hljs-keyword">start</span> <span class="hljs-keyword">with</span> <span class="hljs-number">1</span><br><span class="hljs-keyword">increment</span> <span class="hljs-keyword">by</span> <span class="hljs-number">1</span><br><span class="hljs-keyword">cache</span> <span class="hljs-number">20</span>;<br><br></code></pre></td></tr></table></figure>
+<h4 id="查看导致锁表的sql语句是那一条"><a href="#查看导致锁表的sql语句是那一条" class="headerlink" title="查看导致锁表的sql语句是那一条"></a>查看导致锁表的sql语句是那一条</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> l.session_id <span class="hljs-keyword">sid</span>, <br>s.serial<span class="hljs-comment">#, </span><br>l.locked_mode, <br>l.oracle_username, <br>s.user<span class="hljs-comment">#, </span><br>l.os_user_name, <br>s.machine, <br>s.terminal, <br>a.sql_text, <br>a.action <br><span class="hljs-keyword">from</span> v$sqlarea a, v$<span class="hljs-keyword">session</span> s, v$locked_object l <br><span class="hljs-keyword">where</span> l.session_id = s.sid <br><span class="hljs-keyword">and</span> s.prev_sql_addr = a.address <br><span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> <span class="hljs-keyword">sid</span>, s.serial<span class="hljs-comment">#;</span><br><br></code></pre></td></tr></table></figure>
+<h4 id="杀掉锁表进程："><a href="#杀掉锁表进程：" class="headerlink" title="杀掉锁表进程："></a>杀掉锁表进程：</h4><h5 id="–通过上面的查询获取SID和serial-，替换下面的x-y-就可以解除被锁的状态"><a href="#–通过上面的查询获取SID和serial-，替换下面的x-y-就可以解除被锁的状态" class="headerlink" title="–通过上面的查询获取SID和serial#，替换下面的x,y,就可以解除被锁的状态"></a>–通过上面的查询获取SID和serial#，替换下面的x,y,就可以解除被锁的状态</h5><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs routeros">alter<span class="hljs-built_in"> system </span>kill session <span class="hljs-string">&#x27;x,y&#x27;</span>;<br><br></code></pre></td></tr></table></figure>
 
-<h3 id="查询表空间存放路径"><a href="#查询表空间存放路径" class="headerlink" title="查询表空间存放路径"></a>查询表空间存放路径</h3><pre><code class="hljs plsql">select upper(dd.tablespace_name) &quot;表空间名&quot;,dd.file_name &quot;表空间路径&quot;, round(sum(dd.bytes)&#x2F;(1024*1024),2) &quot;表空间大小(M)&quot;
-        from sys.dba_data_files dd
-        group by dd.tablespace_name,dd.file_name;</code></pre>
+<h3 id="查询表空间存放路径"><a href="#查询表空间存放路径" class="headerlink" title="查询表空间存放路径"></a>查询表空间存放路径</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plsql">select upper(dd.tablespace_name) &quot;表空间名&quot;,dd.file_name &quot;表空间路径&quot;, round(sum(dd.bytes)&#x2F;(1024*1024),2) &quot;表空间大小(M)&quot;<br>        from sys.dba_data_files dd<br>        group by dd.tablespace_name,dd.file_name;<br></code></pre></td></tr></table></figure>
 
-<h3 id="添加表空间"><a href="#添加表空间" class="headerlink" title="添加表空间"></a>添加表空间</h3><pre><code class="hljs plsql">alter tablespace 表空间名(jxpyc) add datafile &#39;&#x2F;u01&#x2F;app&#x2F;oracle&#x2F;oradata&#x2F;hznet&#x2F;res16.dbf&#39; size 4096m;</code></pre>
+<h3 id="添加表空间"><a href="#添加表空间" class="headerlink" title="添加表空间"></a>添加表空间</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plsql">alter tablespace 表空间名(jxpyc) add datafile &#39;&#x2F;u01&#x2F;app&#x2F;oracle&#x2F;oradata&#x2F;hznet&#x2F;res16.dbf&#39; size 4096m;<br></code></pre></td></tr></table></figure>
 
-<h3 id="查看表空间利用率"><a href="#查看表空间利用率" class="headerlink" title="查看表空间利用率"></a>查看表空间利用率</h3><pre><code class="hljs plsql">Select a.Tablespace_Name,
-       Round(Sum(Dbsize) &#x2F; 1024 &#x2F; 1024 &#x2F; 1024, 2) &quot;dbszie(G)&quot;,
-       Round(Sum(Fsize) &#x2F; 1024 &#x2F; 1024 &#x2F; 1024, 2) &quot;fszie(G)&quot;,
-       Round((Sum(Dbsize) - Sum(Fsize)) &#x2F; Sum(Dbsize), 4) * 100 &quot;利用率&quot;,
-       Round(Sum(Fsize) &#x2F; Sum(Dbsize), 4) * 100 &quot;空闲率&quot;
-  From (Select Tablespace_Name, Sum(Bytes) Dbsize
-          From Dba_Data_Files
-         Group By Tablespace_Name) a,
-       (Select Tablespace_Name, Sum(Bytes) Fsize
-          From Dba_Free_Space
-         Group By Tablespace_Name) b
- Where a.Tablespace_Name &#x3D; b.Tablespace_Name(+)
- Group By a.Tablespace_Name;</code></pre>
+<h3 id="查看表空间利用率"><a href="#查看表空间利用率" class="headerlink" title="查看表空间利用率"></a>查看表空间利用率</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs plsql">Select a.Tablespace_Name,<br>       Round(Sum(Dbsize) &#x2F; 1024 &#x2F; 1024 &#x2F; 1024, 2) &quot;dbszie(G)&quot;,<br>       Round(Sum(Fsize) &#x2F; 1024 &#x2F; 1024 &#x2F; 1024, 2) &quot;fszie(G)&quot;,<br>       Round((Sum(Dbsize) - Sum(Fsize)) &#x2F; Sum(Dbsize), 4) * 100 &quot;利用率&quot;,<br>       Round(Sum(Fsize) &#x2F; Sum(Dbsize), 4) * 100 &quot;空闲率&quot;<br>  From (Select Tablespace_Name, Sum(Bytes) Dbsize<br>          From Dba_Data_Files<br>         Group By Tablespace_Name) a,<br>       (Select Tablespace_Name, Sum(Bytes) Fsize<br>          From Dba_Free_Space<br>         Group By Tablespace_Name) b<br> Where a.Tablespace_Name &#x3D; b.Tablespace_Name(+)<br> Group By a.Tablespace_Name;<br></code></pre></td></tr></table></figure>
 
-<h3 id="查询表空间"><a href="#查询表空间" class="headerlink" title="查询表空间"></a>查询表空间</h3><pre><code class="hljs routeros">SELECT
-	upper( dd.tablespace_name ) <span class="hljs-string">&quot;表空间名&quot;</span>,
-	dd.file_name <span class="hljs-string">&quot;表空间路径&quot;</span>,
-	round( sum( dd.bytes ) / ( 1024 * 1024 ), 2 ) <span class="hljs-string">&quot;表空间大小(M)&quot;</span> 
-<span class="hljs-keyword">FROM</span>
-	sys.dba_data_files dd 
-GROUP BY
-	dd.tablespace_name,
-	dd.file_name;</code></pre>
-<h3 id="查询表空间-1"><a href="#查询表空间-1" class="headerlink" title="查询表空间"></a>查询表空间</h3><pre><code class="hljs routeros">select
-       b.file_name 物理文件名,
-       b.tablespace_name 表空间,
-       b.bytes/1024/1024大小M,
-      (b.bytes-sum(nvl(a.bytes,0)))/1024/1024  已使用M,
-      substr((b.bytes-sum(nvl(a.bytes,0)))/(b.bytes)<span class="hljs-number">*100</span>,1,5)  利用率
-<span class="hljs-keyword">from</span> dba_free_space a,dba_data_files b
-where a.<span class="hljs-attribute">file_id</span>=b.file_id 
-group by b.tablespace_name,b.file_name,b.bytes
-order by b.tablespace_name;</code></pre>
+<h3 id="查询表空间"><a href="#查询表空间" class="headerlink" title="查询表空间"></a>查询表空间</h3><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs routeros">SELECT<br>	upper( dd.tablespace_name ) <span class="hljs-string">&quot;表空间名&quot;</span>,<br>	dd.file_name <span class="hljs-string">&quot;表空间路径&quot;</span>,<br>	round( sum( dd.bytes ) / ( 1024 * 1024 ), 2 ) <span class="hljs-string">&quot;表空间大小(M)&quot;</span> <br><span class="hljs-keyword">FROM</span><br>	sys.dba_data_files dd <br>GROUP BY<br>	dd.tablespace_name,<br>	dd.file_name;<br></code></pre></td></tr></table></figure>
+<h3 id="查询表空间-1"><a href="#查询表空间-1" class="headerlink" title="查询表空间"></a>查询表空间</h3><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs routeros">select<br>       b.file_name 物理文件名,<br>       b.tablespace_name 表空间,<br>       b.bytes/1024/1024大小M,<br>      (b.bytes-sum(nvl(a.bytes,0)))/1024/1024  已使用M,<br>      substr((b.bytes-sum(nvl(a.bytes,0)))/(b.bytes)<span class="hljs-number">*100</span>,1,5)  利用率<br><span class="hljs-keyword">from</span> dba_free_space a,dba_data_files b<br>where a.<span class="hljs-attribute">file_id</span>=b.file_id <br>group by b.tablespace_name,b.file_name,b.bytes<br>order by b.tablespace_name;<br></code></pre></td></tr></table></figure>
 
 
-<h3 id="创建表空间"><a href="#创建表空间" class="headerlink" title="创建表空间"></a>创建表空间</h3><pre><code class="hljs sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">tablespace</span> zlbApp 
-<span class="hljs-keyword">logging</span>
-<span class="hljs-keyword">datafile</span> <span class="hljs-string">&#x27;D:\ORACLECLIENT\APP\ADMIN\ORADATA\ORCL\ZLBAPP01.DBF&#x27;</span>
-<span class="hljs-keyword">size</span> <span class="hljs-number">2048</span>m 
-<span class="hljs-keyword">autoextend</span> <span class="hljs-keyword">on</span>                           
-<span class="hljs-keyword">next</span> <span class="hljs-number">512</span>m <span class="hljs-keyword">maxsize</span> <span class="hljs-number">10240</span>m 　　　
-<span class="hljs-keyword">extent</span> <span class="hljs-keyword">management</span> <span class="hljs-keyword">local</span>;</code></pre>
+<h3 id="创建表空间"><a href="#创建表空间" class="headerlink" title="创建表空间"></a>创建表空间</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">tablespace</span> zlbApp <br><span class="hljs-keyword">logging</span><br><span class="hljs-keyword">datafile</span> <span class="hljs-string">&#x27;D:\ORACLECLIENT\APP\ADMIN\ORADATA\ORCL\ZLBAPP01.DBF&#x27;</span><br><span class="hljs-keyword">size</span> <span class="hljs-number">2048</span>m <br><span class="hljs-keyword">autoextend</span> <span class="hljs-keyword">on</span>                           <br><span class="hljs-keyword">next</span> <span class="hljs-number">512</span>m <span class="hljs-keyword">maxsize</span> <span class="hljs-number">10240</span>m 　　　<br><span class="hljs-keyword">extent</span> <span class="hljs-keyword">management</span> <span class="hljs-keyword">local</span>;　<br></code></pre></td></tr></table></figure>
 
 
-<h3 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h3><pre><code class="hljs routeros">create<span class="hljs-built_in"> user </span> isp_scms
- identified by  isp_scms
-default tablespace ZLBAPP;</code></pre>
+<h3 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h3><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs routeros">create<span class="hljs-built_in"> user </span> isp_scms<br> identified by  isp_scms<br>default tablespace ZLBAPP;<br></code></pre></td></tr></table></figure>
 
-<h3 id="赋予用户dba权限"><a href="#赋予用户dba权限" class="headerlink" title="赋予用户dba权限"></a>赋予用户dba权限</h3><pre><code class="hljs sql"><span class="hljs-keyword">grant</span> <span class="hljs-keyword">connect</span>,<span class="hljs-keyword">resource</span>,dba <span class="hljs-keyword">to</span> isp_scms;</code></pre>
+<h3 id="赋予用户dba权限"><a href="#赋予用户dba权限" class="headerlink" title="赋予用户dba权限"></a>赋予用户dba权限</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">grant</span> <span class="hljs-keyword">connect</span>,<span class="hljs-keyword">resource</span>,dba <span class="hljs-keyword">to</span> isp_scms;<br></code></pre></td></tr></table></figure>
 
             </div>
             <hr>

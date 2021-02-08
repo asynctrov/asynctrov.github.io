@@ -237,10 +237,7 @@
 <p><code>hwclock --hctosys</code>   设置系统时间与硬件时间同步</p>
 <p><code>clock -w</code>   保存时钟</p>
 <p><code>init 6  (reboot)</code>   重启</p>
-<h4 id="3-切换用户"><a href="#3-切换用户" class="headerlink" title="3.切换用户"></a>3.切换用户</h4><pre><code class="hljs properties"><span class="hljs-attr">su</span> <span class="hljs-string">- oracle</span>
-<span class="hljs-comment">#查询oracle详细的端口信息</span>
- <span class="hljs-attr">lsnrctl</span> <span class="hljs-string">status </span>
-</code></pre>
+<h4 id="3-切换用户"><a href="#3-切换用户" class="headerlink" title="3.切换用户"></a>3.切换用户</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-attr">su</span> <span class="hljs-string">- oracle</span><br><span class="hljs-comment">#查询oracle详细的端口信息</span><br> <span class="hljs-attr">lsnrctl</span> <span class="hljs-string">status </span><br><br></code></pre></td></tr></table></figure>
 <h4 id="4-系统防火墙"><a href="#4-系统防火墙" class="headerlink" title="4.系统防火墙"></a>4.系统防火墙</h4><p><code>systemctl stop firewalld</code>关闭系统防火墙</p>
 <p><code>systemctl status firewalld</code> 查看防火墙状态</p>
 <h4 id="5-解压war包"><a href="#5-解压war包" class="headerlink" title="5.解压war包"></a>5.解压war包</h4><p><code>unzip -oq common.war -d common</code></p>
